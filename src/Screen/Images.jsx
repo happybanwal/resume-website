@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { AdvancedImage } from "@cloudinary/react";
+import React from 'react'
+
 // import { fill } from "@cloudinary/url-gen/actions/resize";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+
 // import { thumbnail } from "@cloudinary/url-gen/actions/resize";
 // import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
 // import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
@@ -22,31 +22,9 @@ function ViewImage(props) {
 
   const myImage = cld.image(`${routeParams.id}`);
 
-  // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  // myImage.resize(
-  //   thumbnail().width(600).height(1000).gravity(focusOn(FocusOn.face()))
-  // );
+  console.log(myImage)
 
-  const getResumePhoto = async () => {
-    try {
-      const config = {
-        headers: {
-          Accept: "application/json",
-        },
-      };
-      const res = await axios.get(
-        "https://resume-builder-ar9x.onrender.com/api/v1/resume/getResumePhoto/axa1rnie1vyrrcnf8fvb",
-        config
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    getResumePhoto();
-  }, []);
 
   const myUrl = myImage.toURL();
   console.log({ myUrl });
