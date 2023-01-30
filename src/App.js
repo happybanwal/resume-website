@@ -14,9 +14,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/details" element={<Detail/>} />
         <Route exact path="/img/:id" element={<ViewImage />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/details" element={<Detail />} />
       </Routes>
     </Router>
   );
