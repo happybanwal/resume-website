@@ -35,7 +35,7 @@ function ViewImage(props) {
         },
       };
       const res = await axios.get(
-        "http://192.168.1.16:8080/api/v1/resume/getResumePhoto/axa1rnie1vyrrcnf8fvb",
+        "https://resume-builder-ar9x.onrender.com/api/v1/resume/getResumePhoto/axa1rnie1vyrrcnf8fvb",
         config
       );
       console.log(res);
