@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/img/:id" element={<ViewImage />} />
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/details" element={<Detail />} />
+        <Route exact path="/:id" element={<Detail />} />
       </Routes>
     </Router>
   );
