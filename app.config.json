@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "Resume-builder-website",
+            "script": "serve",
+            "args": "-s build -l 4000"
+        }
+    ]
+}
