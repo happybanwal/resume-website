@@ -6,14 +6,12 @@ import Home from "./Screen/Home";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/img/:id" element={<ViewImage />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/img/:id" element={<ViewImage />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 

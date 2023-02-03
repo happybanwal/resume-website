@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
 
 // import { fill } from "@cloudinary/url-gen/actions/resize";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 // import { thumbnail } from "@cloudinary/url-gen/actions/resize";
 // import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
@@ -12,7 +14,7 @@ import { useParams } from "react-router-dom";
 function ViewImage(props) {
   const routeParams = useParams();
 
-  console.log(routeParams.id);
+  // console.log(routeParams.id);
 
   const cld = new Cloudinary({
     cloud: {
@@ -22,25 +24,33 @@ function ViewImage(props) {
 
   const myImage = cld.image(`${routeParams.id}`);
 
-  console.log(myImage)
-
-
+  // console.log(myImage)
 
   const myUrl = myImage.toURL();
-  console.log({ myUrl });
+  // console.log({ myUrl });
+
+ const getResumePhoto = async () => {
+   try {
+     const config = {
+       headers: {
+         Accept: "application/json",
+       },
+     };
+     const res = await axios.get(
+       `http://54.167.87.106:8080/api/v1/resume/getResumePhoto/${routeParams.id}`,
+       config
+     );
+     console.log(res);
+   } catch (error) {
+     console.log(error);
+   }
+ };
+
+ useEffect(() => {
+   getResumePhoto();
+ }, []);
 
   return (
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     objectfit: "cover",
-    //     overflow: "contain",
-    //   }}
-    // >
-    //   <AdvancedImage cldImg={myImage} />
-    // </div>
     <div>
       <img
         src={myUrl}
